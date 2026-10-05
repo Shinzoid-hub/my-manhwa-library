@@ -1,0 +1,604 @@
+/* ==================================================
+   VARIABLES
+   ================================================== */
+
+:root {
+    --bg-color: #18181b;
+    --card-bg: #242428;
+
+    --primary: #e06d9a;
+    --primary-hover: #c95583;
+
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+
+    --border: #3f3f46;
+
+    --ongoing-bg: #4a3d1a;
+    --ongoing-text: #facc15;
+
+    --completed-bg: #183b2a;
+    --completed-text: #4ade80;
+
+    --danger: #dc3545;
+}
+
+.form-group input,
+.form-group select {
+    background: #18181b;
+    color: #f4f4f5;
+    border: 1px solid #3f3f46;
+}
+
+.form-group input::placeholder {
+    color: #71717a;
+}
+
+.form-group select {
+    color: #f4f4f5;
+}
+
+
+/* ==================================================
+   GLOBAL
+   ================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+    background-color: var(--bg-color);
+
+    color: var(--text);
+
+    margin: 0;
+
+    padding: 15px;
+
+    min-height: 100vh;
+}
+
+
+/* ==================================================
+   HEADER
+   ================================================== */
+
+header {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+header h1 {
+    color: var(--primary);
+
+    margin: 0 0 5px 0;
+
+    font-size: 2rem;
+}
+
+
+header p {
+    color: var(--muted);
+
+    margin: 0;
+
+    font-size: 0.95rem;
+}
+
+
+/* ==================================================
+   ADD TITLE FORM
+   ================================================== */
+
+.form-container {
+    background: var(--card-bg);
+
+    max-width: 500px;
+
+    margin: 0 auto 30px auto;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+
+.form-title {
+    margin: 0 0 15px 0;
+
+    font-size: 1.2rem;
+
+    color: var(--primary);
+}
+
+
+/* ==================================================
+   FORM GROUP
+   ================================================== */
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+
+.form-group label {
+    display: block;
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+
+/* ==================================================
+   INPUTS
+   ================================================== */
+
+input[type="text"],
+input[type="url"],
+input[type="number"],
+select {
+    width: 100%;
+
+    padding: 9px 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+    font-family: inherit;
+
+    font-size: 0.95rem;
+
+    color: var(--text);
+
+    background: #ffffff;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+
+/* Focus */
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(224, 109, 154, 0.12);
+}
+
+
+/* Placeholder */
+
+input::placeholder {
+    color: #aaa1a8;
+}
+
+
+/* ==================================================
+   RATING + CHAPTER ROW
+   ================================================== */
+
+.form-group[style*="display: flex"] {
+    align-items: flex-start;
+}
+
+
+.form-group[style*="display: flex"]>div {
+    min-width: 0;
+}
+
+
+/* ==================================================
+   CHECKBOX
+   ================================================== */
+
+.checkbox-group {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+    margin-bottom: 5px;
+}
+
+
+.checkbox-group input {
+    width: 16px;
+
+    height: 16px;
+
+    margin: 0;
+
+    accent-color: var(--primary);
+
+    cursor: pointer;
+}
+
+
+.checkbox-group label {
+    cursor: pointer;
+
+    font-size: 0.9rem;
+}
+
+
+/* ==================================================
+   MAIN BUTTON
+   ================================================== */
+
+form button[type="submit"] {
+    width: 100%;
+
+    background: var(--primary);
+
+    color: white;
+
+    border: none;
+
+    padding: 11px;
+
+    font-family: inherit;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+    transition:
+        background 0.2s,
+        transform 0.1s;
+}
+
+
+form button[type="submit"]:hover {
+    background: var(--primary-hover);
+}
+
+
+form button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+
+/* ==================================================
+   BOOK GRID
+   ================================================== */
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill,
+            minmax(280px, 1fr));
+
+    gap: 20px;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+
+/* ==================================================
+   BOOK CARD
+   ================================================== */
+
+.card {
+    background: var(--card-bg);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.03);
+
+    display: flex;
+
+    flex-direction: column;
+
+    position: relative;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+
+/* ==================================================
+   COVER IMAGE
+   ================================================== */
+
+.card-img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    height: auto;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+
+    background: #ebdce2;
+}
+
+
+/* ==================================================
+   CARD BODY
+   ================================================== */
+
+.card-body {
+    padding: 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex-grow: 1;
+}
+
+
+/* ==================================================
+   CARD TITLE
+   ================================================== */
+
+.card-name {
+    font-size: 1.15rem;
+
+    margin: 0 0 10px 0;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ==================================================
+   INFO ROW
+   ================================================== */
+
+.info-row {
+    font-size: 0.9rem;
+
+    margin-bottom: 6px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+
+.info-label {
+    color: var(--muted);
+}
+
+
+.info-row strong {
+    text-align: right;
+}
+
+
+/* ==================================================
+   STATUS
+   ================================================== */
+
+.status-badge {
+    display: inline-block;
+
+    align-self: flex-start;
+
+    padding: 4px 9px;
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+
+    border-radius: 12px;
+
+    margin-top: auto;
+}
+
+
+.status-ongoing {
+    background: var(--ongoing-bg);
+
+    color: var(--ongoing-text);
+}
+
+
+.status-completed {
+    background: var(--completed-bg);
+
+    color: var(--completed-text);
+}
+
+
+/* ==================================================
+   DELETE BUTTON
+   ================================================== */
+
+.delete-btn {
+    position: absolute;
+
+    top: 10px;
+
+    right: 10px;
+
+    z-index: 10;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    color: white;
+
+    border: none;
+
+    width: 30px !important;
+
+    height: 30px;
+
+    min-width: 30px;
+
+    padding: 0 !important;
+
+    margin: 0 !important;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 0.85rem;
+
+    font-weight: 700;
+
+    line-height: 30px;
+
+    text-align: center;
+
+    transition:
+        background 0.2s,
+        transform 0.15s;
+}
+
+
+.delete-btn:hover {
+    background: rgba(220, 53, 69, 0.9);
+
+    transform: scale(1.08);
+}
+
+
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
+
+/* ==================================================
+   LOADING / EMPTY / ERROR
+   ================================================== */
+
+.grid>p {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    padding: 30px;
+}
+
+
+.grid>div:not(.card) {
+    grid-column: 1 / -1;
+
+    background: var(--card-bg);
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+
+    header p {
+        font-size: 0.85rem;
+    }
+
+
+    .form-container {
+        padding: 16px;
+
+        border-radius: 14px;
+    }
+
+
+    .form-group[style*="display: flex"] {
+        flex-direction: column;
+
+        gap: 12px !important;
+    }
+
+
+    .form-group[style*="display: flex"]>div {
+        width: 100%;
+    }
+
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+
+    .card-img {
+        height: 220px;
+    }
+
+}
