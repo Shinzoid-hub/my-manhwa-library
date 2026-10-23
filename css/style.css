@@ -25,19 +25,14 @@
 
 .form-group input,
 .form-group select {
-    background: #18181b;
-    color: #f4f4f5;
-    border: 1px solid #3f3f46;
+    background: var(--bg-color);
+    color: var(--text);
+    border: 1px solid var(--border);
 }
 
 .form-group input::placeholder {
-    color: #71717a;
+    color: var(--muted);
 }
-
-.form-group select {
-    color: #f4f4f5;
-}
-
 
 /* ==================================================
    GLOBAL
