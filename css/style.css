@@ -24,14 +24,18 @@
 }
 
 .form-group input,
-.form-group select {
-    background: var(--bg-color);
-    color: var(--text);
-    border: 1px solid var(--border);
+.form-group select,
+.form-group textarea {
+    background-color: #18181b !important;
+    color: #f4f4f5 !important;
+    border: 1px solid #3f3f46 !important;
 }
 
-.form-group input::placeholder {
-    color: var(--muted);
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #18181b inset !important;
+    -webkit-text-fill-color: #f4f4f5 !important;
 }
 
 /* ==================================================
